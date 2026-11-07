@@ -259,7 +259,6 @@ nav button[aria-current="true"]{background:var(--accent);color:var(--accent-ink)
     <span class="lbl" id="vGame">Tepat Waktu</span>
     <h3>Kamu Menang!</h3>
     <p class="promo" id="vPromo"></p>
-    <div class="code" id="vCode">KB-0000</div>
     <div class="clock" id="vClock">00:00:00</div>
     <p class="how">Tunjukkan layar ini ke kasir. Jam di atas harus berjalan.</p>
     <button class="btn" id="vClose">Tutup</button>
@@ -294,8 +293,7 @@ $$('.card').forEach(c=>c.addEventListener('click',()=>show(c.dataset.game)));
 $$('[data-back]').forEach(b=>b.addEventListener('click',()=>show('promo')));
 let vTimer=0;
 function showVoucher(g){
-  const code='KB-'+Array.from({length:4},()=>'ABCDEFGHJKLMNPQRSTUVWXYZ23456789'[Math.floor(Math.random()*32)]).join('');
-  $('#vGame').textContent=GAMES[g]||'Game';$('#vPromo').textContent=PROMO_TEXT;$('#vCode').textContent=code;
+  $('#vGame').textContent=GAMES[g]||'Game';$('#vPromo').textContent=PROMO_TEXT;
   const tick=()=>{$('#vClock').textContent=new Date().toLocaleTimeString('id-ID',{hour12:false}).replace(/\./g,':')};
   tick();clearInterval(vTimer);vTimer=setInterval(tick,250);$('#vch').hidden=false;
 }
